@@ -7,10 +7,18 @@ services:
     volumes:
       - ds-neo4j:/data
     ports:
-      - 7474:7474
-      - 7687:7687
+      - 127.0.0.1:7474:7474
+      - 127.0.0.1:7687:7687
+  redis:
+    image: redis
+    volumes:
+      - ds-neo4j-redis-cache:/data
+    ports:
+      - 127.0.0.1:6379:6379
 
 volumes:
   ds-neo4j:
+    driver: local
+  ds-neo4j-redis-cache:
     driver: local
 
